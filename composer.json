@@ -1,0 +1,72 @@
+{
+    "name": "renttek/magento2-logformatters",
+    "description": "Utility module that adds log formatters to be used in Magento 2",
+    "license": "MIT",
+    "type": "magento2-module",
+    "authors": [
+        {
+            "name": "Julian Nuß",
+            "email": "juliann@renttek.de"
+        }
+    ],
+    "require": {
+        "php": ">=8.3",
+        "magento/framework": ">=100.0.0"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.51",
+        "php-parallel-lint/php-console-highlighter": "^1.0",
+        "php-parallel-lint/php-parallel-lint": "^1.4",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^2.1",
+        "rector/rector": "^2.4",
+        "roave/security-advisories": "dev-latest",
+        "symplify/easy-coding-standard": "^13.0",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-strict-rules": "^2.0",
+        "bitexpert/phpstan-magento": "^0.42.0",
+        "tomasvotruba/type-coverage": "^2.1",
+        "tomasvotruba/lines": "^1.2"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://mirror.mage-os.org/",
+            "only": [
+                "magento/*"
+            ]
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Renttek\\Logformatters\\": "src/"
+        },
+        "files": [
+            "registration.php"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "magento/composer-dependency-version-audit-plugin": false,
+            "phpstan/extension-installer": true
+        }
+    },
+    "scripts": {
+        "ecs": "ecs check src",
+        "ecs-fix": "ecs check src --fix",
+        "lint": "parallel-lint src",
+        "phpstan": "phpstan",
+        "rector": "rector process --dry-run",
+        "test": [
+            "@lint",
+            "@ecs",
+            "@phpstan",
+            "@rector"
+        ],
+        "lines-features": "lines features src",
+        "lines-measure": "lines measure src"
+    }
+}
